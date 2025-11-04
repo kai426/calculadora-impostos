@@ -3,39 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juros Compostos</title>
+    <title>Calculadora de Impostos CLT vs. PJ</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
 </head>
 <body>
     <main id="container">
         <div id="calculator">
-            <h2>Calculadora de Juros Compostos</h2>
+            <h2>Calculadora de Impostos</h2>
 
-            <div id="input-box">
-                <div class="input-field">
-                    <label for="value">Valor Inicial (capital):</label>
-                    <input type="number" id="value">
+            <div id="mode-selector">
+                <button id="btn-mode-clt" class="mode-button active">Calcular para CLT</button>
+                <button id="btn-mode-pj" class="mode-button">Calcular para PJ</button>
+            </div>
+
+            <div id="form-clt" class="form-section" style="display: flex;">
+                <div id="input-box">
+                    <div class="input-field">
+                        <label for="clt-salario-bruto">Salário Bruto Mensal:</label>
+                        <input type="number" id="clt-salario-bruto" placeholder="R$ 3500,00">
+                    </div>
+                    <div class="input-field">
+                        <label for="clt-dependentes">Número de Dependentes:</label>
+                        <input type="number" id="clt-dependentes" value="0">
+                    </div>
                 </div>
-                <div class="input-field">
-                    <label for="fee">Taxa de Juros a.m:</label>
-                    <input type="number" id="fee">
+                <button id="calculate-clt" class="calculate-btn">Calcular CLT</button>
+            </div>
+
+            <div id="form-pj" class="form-section" style="display: none;">
+                <div id="input-box">
+                    <div class="input-field">
+                        <label for="pj-regime">Selecione o Regime:</label>
+                        <select id="pj-regime">
+                            <option value="simples">Simples Nacional (Anexo III - 6%)</option>
+                            <option value="presumido">Lucro Presumido (Serviços)</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label for="pj-faturamento">Faturamento Bruto Mensal:</label>
+                        <input type="number" id="pj-faturamento" placeholder="R$ 10000,00">
+                    </div>
                 </div>
-                <div class="input-field">
-                    <label for="time">Tempo de Rendimento a.m:</label>
-                    <input type="number" id="time">
-                </div>
+                <button id="calculate-pj" class="calculate-btn">Calcular PJ</button>
             </div>
 
             <div id="result">
                 <h4>Resultado:</h4>
-                <span id="total">
-                    R$ 0,00
-                </span>
+                <div id="report-content">
+                    <p>Preencha os valores e clique em calcular.</p>
+                </div>
             </div>
-
-            <button id="calculate">Calcular</button>
         </div>
     </main>
+    <script src="js/script.js"></script>
 </body>
 </html>
